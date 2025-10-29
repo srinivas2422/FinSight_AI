@@ -1,0 +1,171 @@
+=== STATE BANK OF INDIA (SBI) ===
+
+== EDUCATION LOANS ==
+
+Bank Type: Public Sector Bank  
+Headquarters: Mumbai, Maharashtra, India  
+Official Website: https://sbi.bank.in/  
+Customer Care: 1800 11 2018  
+
+-----------------------------------
+🏫 Student Loan Scheme
+-----------------------------------
+Description:  
+A term loan for Indian nationals for higher education in India or abroad where admission has been secured. Covers undergraduate, postgraduate, and professional/technical courses.
+
+Interest Rate:  
+- Without Collateral: 10.15% p.a. (up to ₹7.50 lakh)  
+- With Collateral: 9.15% p.a. (above ₹7.50 lakh)  
+
+Processing Fee:  
+- Up to ₹20 lakh: Nil  
+- Above ₹20 lakh: ₹10,000 + taxes  
+
+Tenure:  
+Up to 15 years after commencement of repayment (moratorium = course period + 12 months)
+
+Loan Amount Range:  
+- In India: Up to ₹75 lakh for MBBS/MD/MS; up to ₹50 lakh for other courses (in some cases up to ₹1 crore)  
+- Abroad: Up to ₹7.50 lakh in this scheme (higher for other schemes)
+
+Eligibility:  
+- Resident Type: Resident Indian  
+- Minimum Age: 18 years  
+- Maximum Age: 70 years (verify with bank)
+
+Documents Required:  
+- Completed loan application form with 3 passport-size photographs  
+- Mark sheets of 10th, 12th, and previous qualification certificates  
+- Proof of admission / offer letter from educational institution  
+- Schedule of course expenses, proof of scholarship/assistantship (if any)  
+- Parent/guardian as co-borrower (for loans up to ₹7.50 lakh) or collateral plus co-borrower (for above ₹7.50 lakh)  
+
+
+-----------------------------------
+🎓 Scholar Loan Scheme
+-----------------------------------
+Description:  
+For students admitted to premier institutions (e.g., IITs, IIMs, NITs, etc.) with preferential terms including 100% financing and no processing fee.
+
+Interest Rate: 7.15% – 7.90% p.a.  
+Processing Fee: Nil  
+Tenure: Up to 15 years after course period + 12 months repayment holiday  
+Loan Amount Range: Varies by institution category (up to ₹40 lakh or more)
+
+Eligibility:  
+- Resident Type: Indian National / OCI / PIO / NRI (in some cases)  
+- Minimum Age: 18 years  
+- Maximum Age: Not specified  
+
+Documents Required:  
+- Completed application form with photographs  
+- Admission letter from selected institution, proof of expenses (fees, equipment, travel, etc.)  
+- Parent/guardian as co-borrower or collateral as required by bank  
+
+
+-----------------------------------
+🌍 Global Ed-Vantage Scheme
+-----------------------------------
+Description:  
+For students pursuing higher studies abroad; loans available with collateral for larger amounts.
+
+Interest Rate:  
+- With Collateral: 9.15% p.a. (above ₹7.50 lakh up to ₹3.00 crore)  
+- Other: Varies depending on collateral & institution category  
+
+Processing Fee: ₹10,000 per application  
+Tenure: Up to 15 years after course completion; repayment may start 6 months after completion.  
+Loan Amount Range: Above ₹7.50 lakh up to ₹3.00 crore  
+
+Eligibility:  
+- Resident Type: Indian National  
+- Minimum Age: 18 years  
+- Maximum Age: Not specified  
+
+Documents Required:  
+- Schedule of expenses for the course abroad  
+- Mark sheets and admission proof  
+- Collateral/third-party guarantee documents if required  
+
+
+-----------------------------------
+🛡️ Shaurya Education Loan
+-----------------------------------
+Description:  
+For wards/spouse of Defence, Indian Coast Guard & Central Armed Police personnel.
+
+Interest Rate:  
+- Without Collateral: 9.15% p.a. (above ₹7.50 lakh up to ₹40 lakh)  
+- With Collateral: 9.15% p.a. (above ₹7.50 lakh up to ₹1.50 crore)  
+
+Processing Fee: Not clearly listed (likely similar to main scheme)  
+Tenure: Up to 15 years after course period (moratorium similar to other schemes)  
+
+Loan Amount Range:  
+- In India: Up to ₹40 lakh  
+- Abroad: Up to ₹1.50 crore  
+
+Eligibility:  
+- Resident Type: Indian National (ward/spouse of Defence/Coast Guard/CAPF personnel)  
+- Minimum Age: 18 years  
+- Maximum Age: Not specified  
+
+Documents Required:  
+- Standard education loan documents  
+- Defence eligibility proof (ward/spouse status)  
+- Collateral documents (if required)  
+
+
+-----------------------------------
+🧰 Skill Loan Scheme
+-----------------------------------
+Description:  
+For vocational / skill development courses in India.
+
+Interest Rate: 9.65% p.a. (indicative)  
+Processing Fee: Not clearly listed (verify with bank)  
+Tenure: Up to 7 years (approx)  
+Loan Amount Range: Up to ₹1.5 lakh  
+
+Eligibility:  
+- Resident Type: Indian National  
+- Minimum Age: 18 years  
+- Maximum Age: Not specified  
+
+Documents Required:  
+- Application form  
+- Admission proof for skill course  
+- Proof of expenses  
+- Parent/guardian as co-borrower if required  
+
+
+-----------------------------------
+❓ FAQs
+-----------------------------------
+1. **What is the interest rate for SBI Education Loans?**  
+   The rate starts at ~7.15% p.a. (Scholar Loan) and goes up to 10.15% p.a. (Student Loan Scheme).
+
+2. **Is processing fee charged for education loans?**  
+   No processing fee for loans up to ₹20 lakh in India; ₹10,000 + taxes for larger or abroad-study loans.
+
+3. **Is collateral required?**  
+   Not required up to ₹7.50 lakh; required above ₹7.50 lakh.
+
+4. **When does repayment start?**  
+   After course completion + 12 months (or 6 months for abroad cases); tenure up to 15 years.
+
+5. **Is there a concession for female students?**  
+   Yes — 0.50% p.a. interest concession.
+
+6. **Does the loan cover living/travel expenses?**  
+   Yes, it includes tuition, hostel, library, lab, books, equipment, and travel expenses.
+
+
+-----------------------------------
+📚 Sources
+-----------------------------------
+1. Official Website — https://sbi.bank.in/web/personal-banking/loans/education-loans  
+   Last Updated: 2025  
+
+2. Official Interest Rate Page — https://sbi.co.in/web/interest-rates/loan-schemes-interest-rates/education-loan-scheme  
+   Last Updated: 2025-08-20
