@@ -1,172 +1,138 @@
 {
   "axis\\education_loan.txt": {
     "hash": "aeb487637eacc3d10b1f7a25f31ab5e3",
-    "mtime": 1761748800.524834,
-    "last_processed": "2025-10-29T20:52:56.627925"
+    "mtime": 1763026335.6304157
   },
   "axis\\home_loan.txt": {
     "hash": "8abe9f304bf8771757cf2b1f87e7b3a8",
-    "mtime": 1761748338.417156,
-    "last_processed": "2025-10-29T20:52:56.628925"
+    "mtime": 1763026335.6304157
   },
   "axis\\personal_loan.txt": {
     "hash": "36a9144252cadc6e5c64ef964683031f",
-    "mtime": 1761748806.9311035,
-    "last_processed": "2025-10-29T20:52:56.629916"
+    "mtime": 1763026335.6304157
   },
   "axis\\vehicle_loan.txt": {
     "hash": "a58546ebfb2a19e160312897aaea6587",
-    "mtime": 1761748568.5149763,
-    "last_processed": "2025-10-29T20:52:56.630915"
+    "mtime": 1763026335.6304157
   },
   "bob\\education_loan.txt": {
     "hash": "8e519271690b8a091146329a01d4f569",
-    "mtime": 1761730561.3035445,
-    "last_processed": "2025-10-29T20:52:56.630915"
+    "mtime": 1763026335.6304157
   },
   "bob\\gold_loan.txt": {
     "hash": "9572b44bf141998c61f673c68ccfda9c",
-    "mtime": 1761730286.2217479,
-    "last_processed": "2025-10-29T20:52:56.631913"
+    "mtime": 1763026335.6304157
   },
   "bob\\home_loan.txt": {
     "hash": "4a0c5163f36b903f5e5c9caafaf6b4fb",
-    "mtime": 1761730462.5265498,
-    "last_processed": "2025-10-29T20:52:56.632914"
+    "mtime": 1763026335.6304157
   },
   "bob\\personal_loan.txt": {
     "hash": "13bc783f4ba9044ce99bd5f5de6f71e6",
-    "mtime": 1761730204.4222436,
-    "last_processed": "2025-10-29T20:52:56.634103"
+    "mtime": 1763026335.6304157
   },
   "bob\\vehicle_loan.txt": {
     "hash": "ccf562bc7dfbbdde451479f19768105e",
-    "mtime": 1761730372.149214,
-    "last_processed": "2025-10-29T20:52:56.634803"
+    "mtime": 1763026335.6304157
   },
   "hdfc\\education_loan.txt": {
     "hash": "3256afb5361bd82effef1f7ffedc0476",
-    "mtime": 1761750208.2282786,
-    "last_processed": "2025-10-29T20:52:56.635810"
+    "mtime": 1763026335.6304157
   },
   "hdfc\\gold_loan.txt": {
     "hash": "0c064094deda5ae79fee3800a5c02513",
-    "mtime": 1761750314.2896423,
-    "last_processed": "2025-10-29T20:52:56.635810"
+    "mtime": 1763026335.6304157
   },
   "hdfc\\home_loan.txt": {
     "hash": "eab1974dcd95cbe6b9cc18a2d6f45ce4",
-    "mtime": 1761750437.56114,
-    "last_processed": "2025-10-29T20:52:56.636810"
+    "mtime": 1763026335.6304157
   },
   "hdfc\\personal_loan.txt": {
     "hash": "1b132d48244f37e6a10e25b76bc7aae9",
-    "mtime": 1761750592.4173505,
-    "last_processed": "2025-10-29T20:52:56.636810"
+    "mtime": 1763026335.6304157
   },
   "icici\\education_loan.txt": {
     "hash": "2ea69d4d1cfc758f8edcb4ba924f702a",
-    "mtime": 1761747467.5400062,
-    "last_processed": "2025-10-29T20:52:56.637809"
+    "mtime": 1763026335.6304157
   },
   "icici\\home_loan.txt": {
     "hash": "77eed4a937b965fc5574811053bb46fc",
-    "mtime": 1761751257.6976118,
-    "last_processed": "2025-10-29T20:52:56.639809"
+    "mtime": 1763026335.6304157
   },
   "icici\\personal_loan.txt": {
     "hash": "a9f003cbefce815d45f2b47989a5f5e0",
-    "mtime": 1761747688.2598813,
-    "last_processed": "2025-10-29T20:52:56.639809"
+    "mtime": 1763026335.646348
   },
   "icici\\vehicle_loan.txt": {
     "hash": "8045c27c81d7b433e3b37ba3ce7e708b",
-    "mtime": 1761747960.717371,
-    "last_processed": "2025-10-29T20:52:56.640809"
+    "mtime": 1763026335.646348
   },
   "kotak\\education_loan.txt": {
     "hash": "92a0bbe4dca78b6a2db6f0bb9340c362",
-    "mtime": 1761749040.436932,
-    "last_processed": "2025-10-29T20:52:56.641810"
+    "mtime": 1763026335.646348
   },
   "kotak\\gold_loan.txt": {
     "hash": "110837ce9ec09b5ce2bb17ded271839f",
-    "mtime": 1761749428.6098335,
-    "last_processed": "2025-10-29T20:52:56.642817"
+    "mtime": 1763026335.646348
   },
   "kotak\\home_loan.txt": {
     "hash": "1f43d2fa81010cbac06adbea868d6c36",
-    "mtime": 1761749576.804544,
-    "last_processed": "2025-10-29T20:52:56.643808"
+    "mtime": 1763026335.646348
   },
   "kotak\\personal_loan.txt": {
     "hash": "a21a6a835a763f5b2245ffeddf179db6",
-    "mtime": 1761749952.889719,
-    "last_processed": "2025-10-29T20:52:56.643808"
+    "mtime": 1763026335.646348
   },
   "pnb\\education_loan.txt": {
     "hash": "41f1c8565eafa2020e7f8b45d9d3c046",
-    "mtime": 1761728649.0586388,
-    "last_processed": "2025-10-29T20:52:56.644809"
+    "mtime": 1763026335.646348
   },
   "pnb\\gold_loan.txt": {
     "hash": "2e6d80cb785c339096ee9aefe8f05bec",
-    "mtime": 1761728694.6984224,
-    "last_processed": "2025-10-29T20:52:56.644809"
+    "mtime": 1763026335.646348
   },
   "pnb\\home_loan.txt": {
     "hash": "0cca223502fdae625004590e263b3224",
-    "mtime": 1761728758.4197266,
-    "last_processed": "2025-10-29T20:52:56.645809"
+    "mtime": 1763026335.646348
   },
   "pnb\\personal_loan.txt": {
     "hash": "72ef507378b947f47cae17f3b5256c43",
-    "mtime": 1761728830.916129,
-    "last_processed": "2025-10-29T20:52:56.645809"
+    "mtime": 1763026335.646348
   },
   "sbi\\education_loan.txt": {
     "hash": "7967ec4fb96dcb6a7a89b24700ce229e",
-    "mtime": 1761728249.7841642,
-    "last_processed": "2025-10-29T20:52:56.646810"
+    "mtime": 1763026335.646348
   },
   "sbi\\gold_loan.txt": {
     "hash": "005f4a3bda147cdf682ac52c5635a383",
-    "mtime": 1761728324.9632666,
-    "last_processed": "2025-10-29T20:52:56.646810"
+    "mtime": 1763026335.646348
   },
   "sbi\\home_loan.txt": {
     "hash": "4f01e47837ddcaf883200359c2607e8e",
-    "mtime": 1761728445.3476624,
-    "last_processed": "2025-10-29T20:52:56.647811"
+    "mtime": 1763026335.646348
   },
   "sbi\\personal_loan.txt": {
     "hash": "3a84d4141bd32a0769c4ae7dd39d573e",
-    "mtime": 1761728556.2125154,
-    "last_processed": "2025-10-29T20:52:56.647811"
+    "mtime": 1763026335.646348
   },
   "union\\education_loan.txt": {
     "hash": "bbf18131d9656f78dfd22d6684a0cdb0",
-    "mtime": 1761729930.017764,
-    "last_processed": "2025-10-29T20:52:56.648807"
+    "mtime": 1763026335.646348
   },
   "union\\gold_loan.txt": {
     "hash": "e03cab402196e0f7b83ddecb1f1eab94",
-    "mtime": 1761729320.7688732,
-    "last_processed": "2025-10-29T20:52:56.648807"
+    "mtime": 1763026335.646348
   },
   "union\\home_loan.txt": {
     "hash": "ce1d7e67c3929287ac7d1efb83583820",
-    "mtime": 1761729178.0172265,
-    "last_processed": "2025-10-29T20:52:56.648807"
+    "mtime": 1763026335.646348
   },
   "union\\personal_loan.txt": {
     "hash": "3f0829cab6850eb24c603e1a1ca90e23",
-    "mtime": 1761729659.1264265,
-    "last_processed": "2025-10-29T20:52:56.649808"
+    "mtime": 1763026335.6605492
   },
   "union\\vehicle_loan.txt": {
     "hash": "82f729e0345a42e2413fc250e8878445",
-    "mtime": 1761728986.6636333,
-    "last_processed": "2025-10-29T20:52:56.649808"
+    "mtime": 1763026335.6605492
   }
 }

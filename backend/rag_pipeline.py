@@ -1,13 +1,15 @@
-import os, json, hashlib
-from datetime import datetime
+import os
+import json
+import hashlib
 from typing import Dict, Any
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.chains import RetrievalQA
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 from langchain_community.document_loaders import TextLoader
+from langchain_core.runnables import RunnablePassthrough
+
 from . import config
 
 
@@ -17,7 +19,7 @@ class RAGPipeline:
     def __init__(self):
         self.embeddings = None
         self.vectorstore = None
-        self.qa_chain = None
+        self.chain = None
         self.is_initialized = False
         self.cache_file = os.path.join(os.path.dirname(__file__), "../data/embedding_index.json")
 
@@ -25,7 +27,7 @@ class RAGPipeline:
     # Utility Methods
     # ------------------------------------------------------------
     def _file_hash(self, path: str) -> str:
-        """Generate MD5 hash for a file to detect changes."""
+        """Generate MD5 hash for detecting file changes."""
         with open(path, "rb") as f:
             return hashlib.md5(f.read()).hexdigest()
 
@@ -43,7 +45,6 @@ class RAGPipeline:
     # Initialization
     # ------------------------------------------------------------
     def initialize(self) -> bool:
-        """Load embeddings, data, and initialize FAISS + Gemini model."""
         try:
             if not config.GOOGLE_API_KEY:
                 print("❌ GOOGLE_API_KEY missing.")
@@ -64,30 +65,35 @@ class RAGPipeline:
             old_cache = self._load_cache()
             new_cache, changed_files = {}, []
 
-            # Detect modified/new files
+            # Detect modified or new files
             for root, _, files in os.walk(data_dir):
                 for file in files:
                     if file.endswith(".txt"):
                         path = os.path.join(root, file)
                         file_hash = self._file_hash(path)
                         rel_path = os.path.relpath(path, data_dir)
-                        cached = old_cache.get(rel_path)
-                        if not cached or cached["hash"] != file_hash:
-                            changed_files.append(path)
-                        new_cache[rel_path] = {"hash": file_hash, "mtime": os.path.getmtime(path)}
 
-            # Load existing or update FAISS index
+                        if rel_path not in old_cache or old_cache[rel_path]["hash"] != file_hash:
+                            changed_files.append(path)
+
+                        new_cache[rel_path] = {
+                            "hash": file_hash,
+                            "mtime": os.path.getmtime(path)
+                        }
+
+            # Create or update FAISS index
             if not changed_files and os.path.exists("faiss_index"):
                 print("✅ Using existing FAISS index.")
                 self.vectorstore = FAISS.load_local(
-                    "faiss_index", self.embeddings, allow_dangerous_deserialization=True
+                    "faiss_index",
+                    self.embeddings,
+                    allow_dangerous_deserialization=True
                 )
             else:
                 print(f"📄 Updating index with {len(changed_files)} changed files...")
                 docs = []
                 for path in changed_files:
-                    loader = TextLoader(path, encoding="utf-8")
-                    docs.extend(loader.load())
+                    docs.extend(TextLoader(path, encoding="utf-8").load())
 
                 splitter = RecursiveCharacterTextSplitter(
                     chunk_size=config.CHUNK_SIZE,
@@ -96,12 +102,14 @@ class RAGPipeline:
                 chunks = splitter.split_documents(docs)
 
                 if os.path.exists("faiss_index"):
-                    existing_vs = FAISS.load_local(
-                        "faiss_index", self.embeddings, allow_dangerous_deserialization=True
+                    existing = FAISS.load_local(
+                        "faiss_index",
+                        self.embeddings,
+                        allow_dangerous_deserialization=True
                     )
                     new_vs = FAISS.from_documents(chunks, self.embeddings)
-                    existing_vs.merge_from(new_vs)
-                    self.vectorstore = existing_vs
+                    existing.merge_from(new_vs)
+                    self.vectorstore = existing
                 else:
                     self.vectorstore = FAISS.from_documents(chunks, self.embeddings)
 
@@ -109,26 +117,32 @@ class RAGPipeline:
                 self._save_cache(new_cache)
                 print("✅ Index updated successfully.")
 
+            # Load Google Gemini model
             print("🔹 Initializing Gemini model...")
             llm = ChatGoogleGenerativeAI(
-                model="models/gemini-2.5-flash",
+                model="gemini-2.0-flash",
                 temperature=config.LLM_TEMPERATURE,
-                max_output_tokens=config.MAX_OUTPUT_TOKENS,
+                max_output_tokens=config.MAX_OUTPUT_TOKENS
             )
 
-            # ✅ Use only context and query variables
+            # Prompt template
             prompt = PromptTemplate(
                 template=config.SYSTEM_PROMPT,
-                input_variables=["context", "query"]
+                input_variables=["context", "question"]
             )
 
-            # Build RetrievalQA chain
-            self.qa_chain = RetrievalQA.from_chain_type(
-                llm=llm,
-                retriever=self.vectorstore.as_retriever(search_kwargs={"k": config.TOP_K_RESULTS}),
-                return_source_documents=True,
-                chain_type="stuff",
-                chain_type_kwargs={"prompt": prompt},
+            retriever = self.vectorstore.as_retriever(
+                search_kwargs={"k": config.TOP_K_RESULTS}
+            )
+
+            # Build LCEL chain
+            self.chain = (
+                {
+                    "context": retriever,
+                    "question": RunnablePassthrough()
+                }
+                | prompt
+                | llm
             )
 
             self.is_initialized = True
@@ -143,37 +157,32 @@ class RAGPipeline:
     # Query Logic
     # ------------------------------------------------------------
     def query(self, question: str) -> Dict[str, Any]:
-        """Process user query and return structured, factual response."""
         if not self.is_initialized:
             return {"answer": "❌ Pipeline not initialized.", "sources": []}
 
-
         try:
-            # ✅ Only variables required by the SYSTEM_PROMPT
-            response = self.qa_chain.invoke({
-                "query": question
-            })
+            result = self.chain.invoke(question)
 
-            answer = response.get("result", "No response generated.")
+            # Retrieve source docs from FAISS
+            docs = self.vectorstore.similarity_search(question, k=3)
             sources = [
-                {"id": i + 1, "content": doc.page_content[:400] + "..."}
-                for i, doc in enumerate(response.get("source_documents", []))
+                {"id": idx + 1, "content": doc.page_content[:400] + "..."}
+                for idx, doc in enumerate(docs)
             ]
 
-            return {"answer": answer, "sources": sources}
+            return {"answer": result.content, "sources": sources}
 
         except Exception as e:
-            return {"answer": f"Error processing query: {str(e)}", "sources": []}
+            return {"answer": f"Error: {e}", "sources": []}
 
 
 # ------------------------------------------------------------
-# Singleton Accessor
+# Singleton accessor
 # ------------------------------------------------------------
 _rag_pipeline = None
 
 
 def get_rag_pipeline() -> RAGPipeline:
-    """Return singleton RAGPipeline instance."""
     global _rag_pipeline
     if _rag_pipeline is None:
         _rag_pipeline = RAGPipeline()

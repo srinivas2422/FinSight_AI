@@ -40,7 +40,7 @@ def display_message(role, content, sources=None):
         # Better styling for assistant replies
         if role == "assistant":
             st.markdown(
-                f"<div style='background-color:#1e293b; color:white; padding:10px; border-radius:10px;'>{content}</div>",
+                f"<div style='color:white; padding:10px; border-radius:10px;'>{content}</div>",
                 unsafe_allow_html=True,
             )
         else:
@@ -75,7 +75,7 @@ def process_query(query):
                 sources = data.get("sources", [])
 
                 st.markdown(
-                    f"<div style='background-color:#1e293b; color:white; padding:10px; border-radius:10px;'>{answer}</div>",
+                    f"<div style='color:white; padding:10px; border-radius:10px;'>{answer}</div>",
                     unsafe_allow_html=True,
                 )
 
