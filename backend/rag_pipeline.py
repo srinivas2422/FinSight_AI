@@ -132,7 +132,11 @@ class RAGPipeline:
             )
 
             retriever = self.vectorstore.as_retriever(
-                search_kwargs={"k": config.TOP_K_RESULTS}
+                search_type="similarity",
+                search_kwargs={
+                    "k": config.TOP_K_RESULTS,
+                    "fetch_k": config.TOP_K_RESULTS * 3  # widen initial pool
+                }
             )
 
             # Build LCEL chain
