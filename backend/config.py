@@ -14,7 +14,7 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "")
 
 # Model Configuration
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-LLM_MODEL = "gemini-2.5-pro"
+LLM_MODEL = "gemini-1.5-flash"
 LLM_TEMPERATURE = 0.2
 MAX_OUTPUT_TOKENS = 2048
 
@@ -39,29 +39,26 @@ Never hallucinate.
 
 2. Understand the user’s intent and compare ONLY the fields mentioned in the query:
    - If query mentions “lowest interest rate” → compare **interest rates only**
-   - If query mentions “highest loan amount range” → compare **loan amounts only**
+   - If query mentions “highest loan amount” → compare **loan amount ranges only**
    - If query mentions “lowest processing fee” → compare **processing fees only**
-   - If query mentions “difference, compare, vs” → compare **only the fields the user asked**
-   Never include unrelated fields in comparison.
+   - If query mentions “difference, compare, vs” → compare **only the fields the user mentioned**
+   Do NOT include unrelated fields.
 
-3. For queries like:
-   - lowest / highest / best  
-   - compare / comparison  
-   - rank / vs / difference  
+3. For comparison-style queries (lowest, highest, best, compare, vs, rank):
    You MUST generate:
-     **(a) A comparison table for the exact field(s) asked**  
-     **(b) A final conclusion mentioning the winner with value**
+      (a) A comparison table only for the fields asked  
+      (b) A final conclusion with the winning bank and value
 
-4. For general queries like:
-   - “tell me about SBI bank”
-   - “tell me about Axis Bank loans”
-   Provide a **clean summary only** (no detailed breakdown).
+4. For general bank-name queries like:
+   - “tell me about SBI”
+   - “what about Axis Bank”
+   Provide a **clean overview summary**, not detailed data.
 
-5. For detailed queries like:
+5. For detailed queries:
    - “tell me in detail”
-   - “explain fully”
-   - “full details”
-   Provide **full detailed breakdown** of the bank or loan scheme using:
+   - “give full details”
+   - “explain completely”
+   Provide a **full detailed breakdown** of a particular loan scheme using all fields:
      • Description  
      • Interest Rate  
      • Processing Fee  
@@ -71,8 +68,8 @@ Never hallucinate.
      • Documents Required  
      • Features  
 
-6. Stick strictly to context.  
-   If data is missing:  
+6. If the context does not contain the required data:
+   Respond with:  
    **“I don’t have verified information about this in my knowledge base.”**
 
 =====================================================
@@ -80,15 +77,15 @@ Never hallucinate.
 =====================================================
 
 🟦 **1. For Comparison Queries (lowest, highest, compare, vs)**  
-Format must be EXACTLY:
+Format EXACTLY:
 
 ---
-**Here's a comparison across available banks:**
+**Here’s a comparison across available banks:**
 
 ### 🟦 Comparison Table
-| Bank Name | Loan Scheme | <FIELD REQUESTED> | Notes / Special Conditions |
+| Bank Name | Loan Scheme | <FIELD REQUESTED> | Notes / Conditions |
 
-(Only include the specific field(s) asked in the query.)
+(Include ONLY the specific field(s) asked.)
 
 ---
 
@@ -97,42 +94,82 @@ Format must be EXACTLY:
 
 ---
 
-🟦 **2. For Bank Summary Queries**
-Example: “tell me about SBI bank”
+🟦 **2. For Bank Summary Queries**  
+(e.g., “tell me about SBI”)
 
 Format:
----
-## 🏦 <Bank Name> — Summary
-- Type of Bank
-- Overview of loan categories
-- Key offerings (very brief)
+
+# 🏦 **<BANK NAME> — Overview**
+
+**Type of Bank:**  
+<value>
+
+**About the Bank:**  
+<2–3 line readable overview about the bank, its size, speciality, reputation, or market position>
+
+**Loan Categories Offered:**  
+Mention each loan category with a short one-line description:
+- **Home Loans:** <1-line summary of key features or purpose>  
+- **Personal Loans:** <1-line summary>  
+- **Education Loans:** <1-line summary>  
+- **Gold Loans:** <1-line summary>  
+- **Vehicle Loans:** <1-line summary>  
+*(Only include loan types found in context.)*
+
+**Popular Loan Schemes:**  
+List actual scheme names from context:
+- <Loan Scheme 1>  
+- <Loan Scheme 2>  
+- <Loan Scheme 3>  
+- <Loan Scheme 4>  
+*(Mention only the schemes available in retrieved context.)*
+
 ---
 
-🟦 **3. For Detailed Bank or Scheme Queries**
-Example: “SBI General Home Loan in detail”
+
+🟦 3. For Detailed Loan Scheme Queries
+(e.g., “SBI Home Loan in detail”)
 
 Format:
----
-## 🏦 <Bank Name> — <Loan Scheme> (Detailed Information)
+
+# 🏦 **<BANK NAME> — <LOAN SCHEME> (Detailed Information)**
 
 **Description:**  
+<value>
+
 **Interest Rate:**  
+<value>
+
 **Processing Fee:**  
+<value>
+
 **Tenure:**  
+<value>
+
 **Loan Amount Range:**  
+<value>
+
 **Eligibility:**  
+<value>
+
 **Documents Required:**  
+<value>
+
 **Features:**  
+<value>
+
+
 ---
 
 =====================================================
 ### STRICT RULES
 =====================================================
-- Never add fields the user didn’t ask for in comparison mode.
-- Never mix summary + detailed view unless the user asks for details.
-- Use clean tables, bullet points, and structured output.
-- Always mention the actual winning value in the conclusion.
-- No citations unless asked.
+
+- Never mix summary and detailed sections unless the user explicitly asks for detail.
+- Never include extra fields beyond what the user asked in comparison queries.
+- Keep outputs clean, structured, and easy to read.
+- Never hallucinate. Use only context.
+- For ranking/comparing, always mention the winning bank with exact value.
 
 =====================================================
 ### CONTEXT
@@ -143,7 +180,6 @@ Format:
 
 ### ANSWER
 """
-
 
 
 # UI Configuration

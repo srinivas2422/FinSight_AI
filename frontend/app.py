@@ -66,7 +66,7 @@ def process_query(query):
     with st.chat_message("assistant"):
         with st.spinner("🤔 Thinking..."):
             try:
-                res = requests.post(BACKEND_URL, json={"question": query}, timeout=60)
+                res = requests.post(BACKEND_URL, json={"question": query}, timeout=60) # query will send main.py with /query endpoint
                 if res.status_code != 200:
                     st.error("❌ Server error — check backend logs.")
                     return

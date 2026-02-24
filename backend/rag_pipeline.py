@@ -120,7 +120,7 @@ class RAGPipeline:
             # Load Google Gemini model
             print("🔹 Initializing Gemini model...")
             llm = ChatGoogleGenerativeAI(
-                model="gemini-2.0-flash",
+                model="gemini-2.5-flash",
                 temperature=config.LLM_TEMPERATURE,
                 max_output_tokens=config.MAX_OUTPUT_TOKENS
             )
